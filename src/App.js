@@ -1,54 +1,38 @@
 import React from 'react';
-import propTypes from 'prop-types';
 
-function Food({name, picture, rating}) {
-  return (
-  <div>
-    <h3>I love {name}</h3>
-    <h2>{rating} / 5.0</h2>
-    <img src={picture} alt={name} width="300px"/>
-  </div>
-  );
-}
 
-const foodILike = [
-  {id:1,
-    name : ' Kimch',
-   image : 'https://img.choroc.com/newshop/goods/024444/024444_1.jpg',
-  rating : 4.5
-  },
-  {id:2,
-    name : 'yuk-hoi',
-   image : 'https://i.namu.wiki/i/yUng9QLAEuvdSFliWKSnXGpNV_XzcAQG_LpkZMvCQ5tWB4rvyKAODwn8QQ_oStMABpQJv4B7uz_dULefC9E7OhVRXrfr-FPYHD07acR4r2_RTrg7M2-3vuBXPNzrCS5UBh6G4YSBGq5HOZx9JOzJxg.webp',
-  rating : 3.6
-  },
-  {id:3,
-    name : '',
-   image : 'https://w7.pngwing.com/pngs/412/821/png-transparent-apple-logo-apple-logo-company-heart-logo.png',
-  rating : 3.0
-  },
-  {id:4,
-    name : 'jjigae',
-   image : 'https://i.ytimg.com/vi/PH_-nGRatgo/maxresdefault.jpg',
-  rating : 4.8
+// 클래스형 컴넌트가 되려면 App 클래스가
+// 리액트가 제공하는 Component 클래스를 상속해야함.
+class App extends React.Component{
+
+  // static 같은 존재 
+  state = {
+    count: 0,
+  };
+
+  // add 에 익명 함수 할당.
+  add = () => {
+    // current 인자를 받아 객체{ count : current.count + 1 }를 반환하는 함수.
+    this.setState(current => ({ count : current.count + 1 }));
   }
-];
 
-function renderFood(dish) {
-  return <Food name={dish.name} picture={dish.image} />;
-}
-// const renderFood = dish => <Food name={dish.name} picture={dish.image} />;
+  minus = () => {
+    this.setState(current => ({ count : current.count - 1 }));
+  }
 
-function App() {
-  console.log(foodILike.map(renderFood));
-  return (
-    <div>
-      
-      {foodILike.map(dish => <Food name={dish.name} picture={dish.image} rating={dish.rating} />)}
-      {foodILike.map(dish => <renderFood />)}
+  // thread, Java main 메서드 처럼 요청 시 자동 실행.
+  render() {
+    return (
+      <div>
+        <h1>The number is : {this.state.count}</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    );
+  }
 
-    </div>
-  );
+
+
 }
 
 export default App;
