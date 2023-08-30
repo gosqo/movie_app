@@ -38,7 +38,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage":"https://gosqo.github.id/movie_app",
+  "homepage":"https://gosqo.github.io/movie_app",
   "extends": [
     "next",
     "plugin:react/recommended",
